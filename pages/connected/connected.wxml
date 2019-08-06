@@ -1,0 +1,11 @@
+<view class="container">
+  <view>
+    <text>{{chosenName}}</text>
+    <text>{{chosenID}}</text>
+  </view>
+  
+  <view class="section">
+   <textarea auto-height placeholder="接受信息" />
+  
+  </view>
+</view>

@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{chosenName}}</text>
+  </view>
+  <block wx:for="{{devices}}" wx:key="name">
+    <button type="default" class="btn1" bindtap="setdevice" data-name="{{item.name}}" data-id="{{item.deviceId}}"> {{item.name}} </button>
+  </block>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <button type="default" bindtap="openblue"> 打开蓝牙模块 </button>
+    <button type="default" bindtap="getallblue"> 显示刷新设备列表 </button>
+    <button type="default" bindtap="connect"> 连接设备 </button>
+  </view>
+</view>
