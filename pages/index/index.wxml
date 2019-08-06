@@ -5,11 +5,13 @@
     <text class="user-motto">{{chosenName}}</text>
   </view>
   <block wx:for="{{devices}}" wx:key="name">
-    <button type="default" class="btn1" bindtap="setdevice" data-name="{{item.name}}" data-id="{{item.deviceId}}"> {{item.name}} </button>
+    <van-button type="default" class="btn1" bindtap="setdevice" data-name="{{item.name}}" data-id="{{item.deviceId}}"> {{item.name}} </van-button>
   </block>
   <view class="flex-wrp" style="flex-direction:row;">
-    <button type="default" bindtap="openblue"> 打开蓝牙模块 </button>
-    <button type="default" bindtap="getallblue"> 显示刷新设备列表 </button>
-    <button type="default" bindtap="connect"> 连接设备 </button>
+    <van-button  type="primary" plain  bindtap="openblue"> 打开蓝牙模块 </van-button>
+    <van-button type="primary" plain  bindtap="getallblue"> 显示刷新设备列表 </van-button>
+    <van-button type="primary" plain bindtap="connect"> 连接设备 </van-button>
   </view>
+  
 </view>
+

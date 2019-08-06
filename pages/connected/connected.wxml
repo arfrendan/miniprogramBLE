@@ -1,11 +1,30 @@
 <view class="container">
   <view>
-    <text>{{chosenName}}</text>
-    <text>{{chosenID}}</text>
+    <text>成功连接到设备：</text>
+    <text>{{chosenName}}\n</text>
+    <text>设备ID：</text>
+    <text>{{chosenID}}\n</text>
+    <text>拥有的特征：</text>
+    <text>{{characteristicsList}}</text>
   </view>
   
   <view class="section">
    <textarea auto-height placeholder="接受信息" />
-  
   </view>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <button type="default" bindtap="changeState"> 切换模式 </button>
+  </view>
+  <van-cell-group>
+  <van-field
+    value="{{ sms }}"
+    center
+    clearable
+    label="写入信息"
+    placeholder="请输入写入内容"
+    border="{{ false }}"
+    use-button-slot
+  >
+    <van-button slot="button" size="small" type="primary">发送</van-button>
+  </van-field>
+</van-cell-group>
 </view>
