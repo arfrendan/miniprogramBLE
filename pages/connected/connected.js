@@ -93,6 +93,50 @@ Page({
       }
     })
   },
+  printTest1: function(){
+    var that = this;
+    let data = 'line;;line;;line;;line;;cut';
+    let buffer = stringToBuffer(data)
+    wx.writeBLECharacteristicValue({
+      deviceId: that.data.chosenID,
+      serviceId: that.data.serviceUUID,
+      characteristicId: that.data.characteristicsUUID,
+      value: buffer,
+      success(res) {
+        console.log('writeBLECharacteristicValue success', res.errMsg)
+      }
+    })
+  },
+
+  printTest2: function () {
+    var that = this;
+    let data = 'text 1 2 3;;text 1 2 3;;text 1 2 3;;text 1 2 3;;cut';
+    let buffer = stringToBuffer(data)
+    wx.writeBLECharacteristicValue({
+      deviceId: that.data.chosenID,
+      serviceId: that.data.serviceUUID,
+      characteristicId: that.data.characteristicsUUID,
+      value: buffer,
+      success(res) {
+        console.log('writeBLECharacteristicValue success', res.errMsg)
+      }
+    })
+  },
+
+  printTest3: function () {
+    var that = this;
+    let data = 'text 1 2 3;;set right 2 normal;;text 1 2 3;;line;;cut';
+    let buffer = stringToBuffer(data)
+    wx.writeBLECharacteristicValue({
+      deviceId: that.data.chosenID,
+      serviceId: that.data.serviceUUID,
+      characteristicId: that.data.characteristicsUUID,
+      value: buffer,
+      success(res) {
+        console.log('writeBLECharacteristicValue success', res.errMsg)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

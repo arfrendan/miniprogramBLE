@@ -21,7 +21,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     time: (new Date()).toString(),
-    devices: [{ name: "123", deviceId:"12346"},{name:"456"}],
+    devices: [],
     chosenName:"now device is",
     chosenID:""
   },

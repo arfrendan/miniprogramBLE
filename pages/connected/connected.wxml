@@ -19,6 +19,9 @@
   </view>
   <view class="flex-wrp" style="flex-direction:row;">
     <button type="default" bindtap="changeState"> 切换模式 </button>
+    <button type="default" bindtap="printTest1"> 打印测试1 </button>
+    <button type="default" bindtap="printTest2"> 打印测试2 </button>
+    <button type="default" bindtap="printTest3"> 打印测试3 </button>
     
   </view>
   <form bindsubmit="formSubmit">
