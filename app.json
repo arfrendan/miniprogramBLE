@@ -6,7 +6,8 @@
   ],
   "usingComponents": {
     "van-button": "/vant-weapp/dist/button/index",
-    "van-field": "/vant-weapp/dist/field/index"
+    "van-field": "/vant-weapp/dist/field/index",
+    "van-popup": "/vant-weapp/dist/popup/index"
   },
   "tabBar": {
     "list": [
@@ -18,6 +19,7 @@
         "pagePath": "pages/logs/logs",
         "text": "日志"
       }
+      
     ]
   },
   "window": {

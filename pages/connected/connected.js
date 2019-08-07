@@ -21,7 +21,11 @@ Page({
     chosenName: "now device is",
     chosenID: "",
     serviceUUID: "",
-    characteristicsUUID:""
+    characteristicsUUID:"",
+    show: false,
+    receiveData: "",
+    writeContent:"",
+    
   },
 
 
@@ -31,7 +35,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    this.setData({ chosenID: options.deviceID})
+    this.setData({ chosenID: options.deviceID,chosenName: options.deviceName})
     
     wx.getBLEDeviceServices({
       deviceId: options.deviceID,
@@ -58,11 +62,26 @@ Page({
       }
     })
   },
-
+  formSubmit: function(e){
+    var that = this;
+    let data = e.detail.value.input
+    let buffer = stringToBuffer(data)
+    wx.writeBLECharacteristicValue({
+      deviceId: that.data.chosenID,
+      serviceId: that.data.serviceUUID,
+      characteristicId: that.data.characteristicsUUID,
+      value: buffer,
+      success(res) {
+        console.log('writeBLECharacteristicValue success', res.errMsg)
+      }
+    })
+  },
+  
+  
   changeState: function(){
     var that = this;
     let data = 'change';
-    buffer = stringToBuffer(data)
+    let buffer = stringToBuffer(data)
     
     wx.writeBLECharacteristicValue({
       deviceId : that.data.chosenID,
@@ -81,17 +100,23 @@ Page({
     
   },
 
+  
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
     wx.onBLECharacteristicValueChange(function (res) {
       console.log(`characteristic ${res.characteristicId} has changed, now is ${res.value}`)
       let recData = bufferToString(res.value)
-      
+      that.setData({receiveData: recData});
+      that.setData({show: true});
     })
   },
 
+  onClose() {
+    this.setData({ show: false });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

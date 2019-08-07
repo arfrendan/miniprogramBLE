@@ -66,6 +66,47 @@ Page({
     })
   },
 
+  rspiconnect:function(){
+    var that = this;
+    wx.openBluetoothAdapter({
+      success: function(res) {
+        wx.startBluetoothDevicesDiscovery({
+          success: function(res) {
+            wx.getBluetoothDevices({
+              success: function(res) {
+                setTimeout(function(){
+                  console.log(res.devices);
+                  that.setData({ devices: res.devices })
+                  for (var i in that.data.devices) {
+                    console.log(that.data.devices[i]);
+                    //console.log(i.name);
+                    if (that.data.devices[i].name == 'raspberrypi') {
+                      that.data.chosenID = that.data.devices[i].deviceId;
+                      var name = that.data.devices[i].name;
+                      console.log(that.data.chosenID);
+                      wx.createBLEConnection({
+                        deviceId: that.data.chosenID,
+                        success: function (res) {
+                          wx.stopBluetoothDevicesDiscovery({
+                            success: function (res) {
+                              console.log('scanning stop')
+                              wx.navigateTo({ url: '/pages/connected/connected?deviceID=' + that.data.chosenID +'&deviceName='+name});
+                            },
+                          })
+                        },
+                      })
+                    }
+                  }
+                },1000)
+                
+                
+              },
+            })
+          },
+        })
+      },
+    }) 
+  },
   getallblue: function () {
     var that = this;
     wx.getBluetoothDevices({

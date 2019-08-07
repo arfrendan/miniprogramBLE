@@ -9,22 +9,27 @@
   </view>
   
   <view class="section">
-   <textarea auto-height placeholder="接受信息" />
+    <van-popup
+    show="{{ show }}"
+    position="top"
+    bind:close="onClose"
+    >
+      {{receiveData}}
+    </van-popup>
   </view>
   <view class="flex-wrp" style="flex-direction:row;">
     <button type="default" bindtap="changeState"> 切换模式 </button>
+    
   </view>
-  <van-cell-group>
-  <van-field
-    value="{{ sms }}"
-    center
-    clearable
-    label="写入信息"
-    placeholder="请输入写入内容"
-    border="{{ false }}"
-    use-button-slot
-  >
-    <van-button slot="button" size="small" type="primary">发送</van-button>
-  </van-field>
-</van-cell-group>
+  <form bindsubmit="formSubmit">
+    
+      <view class="section">
+        <view class="section__title">input</view>
+        <input name="input" placeholder="please input here" />
+       </view>
+       <button slot="button" size="small" type="primary"  form-type="submit"  >发送</button>
+    
+  </form>
+  
+
 </view>
